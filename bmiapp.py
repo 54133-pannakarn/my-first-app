@@ -5,8 +5,8 @@ st.markdown("# :red[🏋️แอปพลิเคชั่นคำนวณ�
 st.write("กรอกข้อมูลน้ำหนักและส่วนสูงของคุณ เพื่อเช็คสุขภาพเบื้องต้น")
 
 #ส่วนที่ 2 สร้างช่องค่ารับค่าน้ำหนัก และ ส่วนสูง
-weight = st.number_inptu("กรอกรน้ำหนักของคุณ (กิโบกรัม):")
-height_cm = st.number_input("กรอกส่วนสูงของคุณ (เซนติเมตร)")
+weight = st.number_inptu("กรอกรน้ำหนักของคุณ (กิโบกรัม):",min_value=1.0,value=1.0)
+height_cm = st.number_input("กรอกส่วนสูงของคุณ (เซนติเมตร)",min_value=1.0,value=1.0)
 
 if st.button("คำนวณค่า BMI"):
       height_m = height_cm / 100
@@ -16,13 +16,13 @@ if st.button("คำนวณค่า BMI"):
 
       st.header(f"ค่า BMI ของคุณคือ: **{bmi:.2f}**")
 
- if bmi < 18.5:
+   if bmi < 18.5:
       st.warning("⚠️คุณมีน้ำหนักน้อยกว่าเกณฑ์")
- elif 18.5 <= bmi < 23.0:
+   elif 18.5 <= bmi < 23.0:
       st.success("❤️คุณมีน้ำหนักอยู่ในเกณฑ์ปกติ (สุขภาพดี)")
- elif 23.0 <= bmi < 25.0:
+   elif 23.0 <= bmi < 25.0:
       st.success("🔥คุณเริ่มมีน้ำหนักเกิรน (ท้วม)")
- else:
+   else:
       st.error("🚨 คุณอยู่ในเกณฑ์อ้วน ควรระวังเรื่องสุขภาพและออกกำลังกาย")
 
 st.divider()

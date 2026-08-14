@@ -1,11 +1,11 @@
 import streamlit as st
 
-#ส่วนที่ 1 หัวข้อเว็บ (titleสีแดง)
+
 st.markdown("# :red[🏋️แอปพลิเคชั่นคำนวณค่าดัชนีมวลกาย BMI]")
 st.write("กรอกข้อมูลน้ำหนักและส่วนสูงของคุณ เพื่อเช็คสุขภาพเบื้องต้น")
 
-#ส่วนที่ 2 สร้างช่องค่ารับค่าน้ำหนัก และ ส่วนสูง
-weight = st.number_inptu("กรอกรน้ำหนักของคุณ (กิโบกรัม):",min_value=1.0,value=1.0)
+
+weight = st.number_inptu("กรอกรน้ำหนักของคุณ (กิโลกรัม):",min_value=1.0,value=1.0)
 height_cm = st.number_input("กรอกส่วนสูงของคุณ (เซนติเมตร)",min_value=1.0,value=1.0)
 
 if st.button("คำนวณค่า BMI"):

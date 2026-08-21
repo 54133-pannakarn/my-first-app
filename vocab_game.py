@@ -78,9 +78,9 @@ def show_result_dialog(ans1, ans2, ans3, ans4):
 # ----------------------------------------------------
 st.button("🎮 เริ่มเล่นเกม", on_click=reset_game)
 
-# 2. แถบแสดงเวลานับถอยหลัง
+# 2. แถบแสดงเวลานับถอยหลัง (ปรับเป็น 45 วินาที)
 if "start" in st.session_state and not st.session_state.get("is_ended", False):
-    time_left = int(30 - (time.time() - st.session_state.start))
+    time_left = int(45 - (time.time() - st.session_state.start))
 
     if time_left > 0:
         st.error(f"⏳ เหลือเวลา: {time_left} วินาที")
@@ -90,30 +90,23 @@ if "start" in st.session_state and not st.session_state.get("is_ended", False):
 
 st.divider()
 
-# 3. ช่องรับคำตอบ (ใช้ value ผูกกับตัวแปรตรงๆ เพื่อสั่งเคลียร์ได้)
+# 3. ช่องรับคำตอบ (ใช้ key ผูกเพื่อป้องกันค่าหายระหว่างนับถอยหลัง)
 ans1 = st.text_input(
     "ข้อ 1: An `a _ _ l e` a day keeps the doctor away. 🍎",
-    value=st.session_state.ans1_val,
+    key="ans1_val",
 )
 ans2 = st.text_input(
     "ข้อ 2: Cats love to eat `f _ s h`. 🐟",
-    value=st.session_state.ans2_val,
+    key="ans2_val",
 )
 ans3 = st.text_input(
     "ข้อ 3: He wears `g l _ s s e s` to read a book. 👓",
-    value=st.session_state.ans3_val,
+    key="ans3_val",
 )
 ans4 = st.text_input(
     "ข้อ 4: The kid is playing with a red `b a l l _ o n`. 🎈",
-    value=st.session_state.ans4_val,
+    key="ans4_val",
 )
-
-# อัปเดตค่าล่าสุดเข้าตัวแปร
-st.session_state.ans1_val = ans1
-st.session_state.ans2_val = ans2
-st.session_state.ans3_val = ans3
-st.session_state.ans4_val = ans4
-
 
 # 4. ปุ่มส่งคำตอบ
 if "start" in st.session_state and not st.session_state.get("is_ended", False):
